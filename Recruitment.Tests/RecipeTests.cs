@@ -30,6 +30,19 @@ namespace Recruitment.Tests
             recipe.CookedWeight = cookedWeight;
             return recipe.CookLoss;
         }
+
+        private static IEnumerable<TestCaseData> TotalWeightCases()
+        {
+            yield return new TestCaseData(RecipeTestData.GetBeefPieRecipe()).Returns(100);
+            yield return new TestCaseData(RecipeTestData.GetVegetableSoupRecipe()).Returns(160);
+        }
+
+        [Test]
+        [TestCaseSource(nameof(TotalWeightCases))]
+        public decimal Recipe_ShouldCorrectlyCalculateTotalWeight(IRecipe recipe)
+        {
+            return recipe.TotalWeight;
+        }
     }
 
 }
