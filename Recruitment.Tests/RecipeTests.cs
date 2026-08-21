@@ -76,6 +76,38 @@ namespace Recruitment.Tests
             Assert.That(recipe.Allergens, Is.Empty);
         }
 
+        [Test]
+        public void Recipe_IngredientDeclaration_ShouldOrderByDescendingQuantityWithNoAllergens()
+        {
+            Recipe recipe = RecipeTestData.GetBeefPieRecipe();
+
+            Assert.That(recipe.IngredientDeclaration, Is.EqualTo("Pastry, Beef, Gravy"));
+        }
+
+        [Test]
+        public void Recipe_IngredientDeclaration_ShouldBoldAllergensInParentheses()
+        {
+            Recipe recipe = RecipeTestData.GetFishAndChipsRecipe();
+
+            Assert.That(recipe.IngredientDeclaration, Is.EqualTo("Fish (<b>Fish</b>), Milk (<b>Milk</b>), Eggs (<b>Egg</b>)"));
+        }
+
+        [Test]
+        public void Recipe_IngredientDeclaration_ShouldGroupMultipleAllergensForOneIngredient()
+        {
+            Recipe recipe = RecipeTestData.GetPrawnCocktailRecipe();
+
+            Assert.That(recipe.IngredientDeclaration, Is.EqualTo("Fish (<b>Fish</b>), Prawn Mayo (<b>Fish, Egg</b>)"));
+        }
+
+        [Test]
+        public void Recipe_IngredientDeclaration_ShouldBeEmptyWhenNoIngredients()
+        {
+            Recipe recipe = new Recipe("R999", "Empty Recipe");
+
+            Assert.That(recipe.IngredientDeclaration, Is.Empty);
+        }
+
     }
 
 }

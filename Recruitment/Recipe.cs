@@ -16,5 +16,16 @@ namespace Recruitment
         public decimal CookLoss => Math.Round((TotalWeight - CookedWeight) / TotalWeight * 100);
 
         public IEnumerable<Allergen> Allergens => Ingredients.SelectMany(i => i.Allergens).Distinct();
+
+        public string IngredientDeclaration => string.Join(", ", Ingredients.OrderByDescending(i => i.Quantity).Select(FormatIngredient));
+
+        private static string FormatIngredient(Ingredient ingredient)
+        {
+            if (!ingredient.Allergens.Any())
+                return ingredient.Description;
+
+            string allergenList = string.Join(", ", ingredient.Allergens);
+            return $"{ingredient.Description} (<b>{allergenList}</b>)";
+        }
     }
 }
