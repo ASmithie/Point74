@@ -31,6 +31,7 @@ namespace Recruitment.Tests
             return recipe.CookLoss;
         }
 
+        #region task1 tests
         private static IEnumerable<TestCaseData> TotalWeightCases()
         {
             yield return new TestCaseData(RecipeTestData.GetBeefPieRecipe()).Returns(100);
@@ -43,7 +44,9 @@ namespace Recruitment.Tests
         {
             return recipe.TotalWeight;
         }
+        #endregion
 
+        #region task2 tests
         [Test]
         public void Ingredient_ShouldSupportMultipleAllergens()
         {
@@ -75,7 +78,9 @@ namespace Recruitment.Tests
 
             Assert.That(recipe.Allergens, Is.Empty);
         }
+        #endregion
 
+        #region task3 tests
         [Test]
         public void Recipe_IngredientDeclaration_ShouldOrderByDescendingQuantityWithNoAllergens()
         {
@@ -107,7 +112,7 @@ namespace Recruitment.Tests
 
             Assert.That(recipe.IngredientDeclaration, Is.Empty);
         }
-
+        #endregion
     }
 
 }
