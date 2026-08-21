@@ -43,6 +43,39 @@ namespace Recruitment.Tests
         {
             return recipe.TotalWeight;
         }
+
+        [Test]
+        public void Ingredient_ShouldSupportMultipleAllergens()
+        {
+            Ingredient ingredient = IngredientTestData.GetPrawnMayoIngredient(50);
+
+            Assert.That(ingredient.Allergens, Is.EquivalentTo(new[] { Allergen.Fish, Allergen.Egg }));
+        }
+
+        [Test]
+        public void Recipe_ShouldListAllAllergensAcrossIngredients()
+        {
+            Recipe recipe = RecipeTestData.GetFishAndChipsRecipe();
+
+            Assert.That(recipe.Allergens, Is.EquivalentTo(new[] { Allergen.Fish, Allergen.Egg, Allergen.Milk }));
+        }
+
+        [Test]
+        public void Recipe_AllergensShouldNotContainDuplicates()
+        {
+            Recipe recipe = RecipeTestData.GetPrawnCocktailRecipe();
+
+            Assert.That(recipe.Allergens, Is.EquivalentTo(new[] { Allergen.Fish, Allergen.Egg }));
+        }
+
+        [Test]
+        public void Recipe_ShouldHaveNoAllergensWhenIngredientsHaveNone()
+        {
+            Recipe recipe = RecipeTestData.GetBeefPieRecipe();
+
+            Assert.That(recipe.Allergens, Is.Empty);
+        }
+
     }
 
 }

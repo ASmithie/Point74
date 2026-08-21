@@ -14,5 +14,7 @@ namespace Recruitment
         public override decimal TotalWeight => Ingredients.Sum(i => i.Quantity);
 
         public decimal CookLoss => Math.Round((TotalWeight - CookedWeight) / TotalWeight * 100);
+
+        public IEnumerable<Allergen> Allergens => Ingredients.SelectMany(i => i.Allergens).Distinct();
     }
 }

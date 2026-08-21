@@ -52,5 +52,28 @@ namespace Recruitment.Tests
 
             return recipe;
         }
+
+        public static Recipe GetFishAndChipsRecipe()
+        {
+            Recipe recipe = new Recipe("R004", "Fish and Chips");
+            recipe.Ingredients = new Ingredient[]
+            {
+                IngredientTestData.GetFishIngredient(100),
+                IngredientTestData.GetEggsIngredient(20),
+                IngredientTestData.GetMilkIngredient(30),
+            };
+            return recipe;
+        }
+
+        public static Recipe GetPrawnCocktailRecipe()
+        {
+            Recipe recipe = new Recipe("R005", "Prawn Cocktail");
+            recipe.Ingredients = new Ingredient[]
+            {
+                IngredientTestData.GetFishIngredient(100),
+                IngredientTestData.GetPrawnMayoIngredient(50),
+            };
+            return recipe;
+        }
     }
 }
