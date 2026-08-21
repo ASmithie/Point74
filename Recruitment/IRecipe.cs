@@ -37,5 +37,7 @@ namespace Recruitment
         ///  The value should be returned as a percentage of the total weight, and should be whole number and not a fractional decimal. e.g. 100 instead of 1.
         /// </summary>
         decimal CookLoss { get; }
+
+        IEnumerable<Allergen> Allergens { get; }
     }
 }
