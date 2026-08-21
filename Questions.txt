@@ -1,0 +1,36 @@
+Task 1 - fix the project up:
+
+1. Calculate the total weight as per the comments on the base class
+
+2. Add the IRecipe interface to the Recipe class
+	Implement the interface
+
+3. Implement the cook loss calculation (see the interface comments for instructions)	
+
+
+Task 2 - a new requirement:
+
+We need to support labelling for the allergens 'Fish', 'Egg' and 'Milk'. These will come from one or more ingredients in a recipe and we will need to be able to see the list of all the allergens that a recipe contains.
+
+Verify that:
+	- Ingredients can have one or more allergens assigned to them from the list
+	  'Fish', 'Egg', and 'Milk'.
+	- A property exists on a Recipe that lists all the allergens in that recipe.
+
+
+Task 3 - another requirement:
+
+We need to produce the back-of-pack ingredients declaration for a recipe. This should comprise a comma-delimited list of all the ingredients in the recipe in descending order of quantity, so the ingredient with the highest quantity goes first in the list. Each ingredient with allergens should list the allergens after it in parentheses and bold.
+
+For example, if you had a Steak Slice recipe the ingredient declaration might look like:
+
+Beef Stew (Soya), Pastry (Milk), Egg glaze (Egg)
+
+Verify that:
+	- A Recipe has a property that outputs the back-of-pack ingredient
+	  declaration as described above
+
+
+Task 4 - technical debt:
+
+Can you add unit tests to the test project for the features that you've added?
